@@ -33,7 +33,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtBoxNumero = new System.Windows.Forms.TextBox();
-            this.txtBoxMateria = new System.Windows.Forms.TextBox();
+            this.txtBoxDisciplina = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnCancelar
@@ -57,6 +57,7 @@
             this.btnGravar.TabIndex = 8;
             this.btnGravar.Text = "Gravar";
             this.btnGravar.UseVisualStyleBackColor = true;
+            this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
             // label1
             // 
@@ -84,19 +85,19 @@
             this.txtBoxNumero.Size = new System.Drawing.Size(150, 31);
             this.txtBoxNumero.TabIndex = 12;
             // 
-            // txtBoxMateria
+            // txtBoxDisciplina
             // 
-            this.txtBoxMateria.Location = new System.Drawing.Point(95, 123);
-            this.txtBoxMateria.Name = "txtBoxMateria";
-            this.txtBoxMateria.Size = new System.Drawing.Size(268, 31);
-            this.txtBoxMateria.TabIndex = 13;
+            this.txtBoxDisciplina.Location = new System.Drawing.Point(95, 123);
+            this.txtBoxDisciplina.Name = "txtBoxDisciplina";
+            this.txtBoxDisciplina.Size = new System.Drawing.Size(268, 31);
+            this.txtBoxDisciplina.TabIndex = 13;
             // 
             // TelaCadastroDisciplinaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(440, 362);
-            this.Controls.Add(this.txtBoxMateria);
+            this.Controls.Add(this.txtBoxDisciplina);
             this.Controls.Add(this.txtBoxNumero);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -116,6 +117,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtBoxNumero;
-        private System.Windows.Forms.TextBox txtBoxMateria;
+        private System.Windows.Forms.TextBox txtBoxDisciplina;
     }
 }

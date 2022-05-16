@@ -28,18 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.grid = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
             // 
-            // TabelaDisciplinaControl
+            // grid
+            // 
+            this.grid.AllowUserToAddRows = false;
+            this.grid.AllowUserToDeleteRows = false;
+            this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grid.Location = new System.Drawing.Point(0, 0);
+            this.grid.Name = "grid";
+            this.grid.ReadOnly = true;
+            this.grid.RowHeadersWidth = 62;
+            this.grid.RowTemplate.Height = 33;
+            this.grid.Size = new System.Drawing.Size(653, 544);
+            this.grid.TabIndex = 0;
+          
+            // 
+            // TabelaMateriaControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Name = "TabelaDisciplinaControl";
-            this.Size = new System.Drawing.Size(323, 359);
+            this.Controls.Add(this.grid);
+            this.Name = "TabelaMateriaControl";
+            this.Size = new System.Drawing.Size(653, 544);
+            ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.DataGridView grid;
     }
 }

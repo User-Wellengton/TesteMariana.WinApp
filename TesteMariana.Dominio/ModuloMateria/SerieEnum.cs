@@ -8,8 +8,7 @@ namespace TesteMariana.Dominio.ModuloMateria
 {
     public enum SerieEnum 
     {
-        PrimeiraSerie = 0,
-        SegundaSerie = 1,
+        Primeira, Segunda
 
     }
 }

@@ -11,11 +11,7 @@ namespace TesteMariana.Dominio.ModuloQuestao
     {
         public ValidadorQuestao()
         {
-            RuleFor(x => x.Enunciado)
-                .NotNull().NotEmpty(); // metodo para nao deixar o campo Enunciado vazio nem nulo
-
-            RuleFor(x => x.Resposta)
-                .NotNull().NotEmpty(); // metodo para nao deixar o campo Resposta vazio nem nulo
+            
 
         }
 

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace TesteMariana.WinApp.Compartilhado
 {
@@ -78,6 +80,5 @@ namespace TesteMariana.WinApp.Compartilhado
 
             return (T)Convert.ChangeType(value, typeof(T));
         }
-
     }
 }

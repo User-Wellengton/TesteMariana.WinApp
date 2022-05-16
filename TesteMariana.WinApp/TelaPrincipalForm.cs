@@ -58,17 +58,17 @@ namespace TesteMariana.WinApp
             ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
         }
 
-        private void disciplinaMenuItem_Click(object sender, EventArgs e)
+        private void disciplinaMenuItem_Click(object sender, EventArgs e)// botoes do menu de categorias
         {
             ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
         }
 
-        private void materiaMenuItem_Click(object sender, EventArgs e)
+        private void materiaMenuItem_Click(object sender, EventArgs e)// botoes do menu de categorias
         {
             ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
         }
 
-        private void questoesMenuItem_Click(object sender, EventArgs e)
+        private void questoesMenuItem_Click(object sender, EventArgs e)// botoes do menu de categorias
         {
             ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
         }
@@ -90,7 +90,7 @@ namespace TesteMariana.WinApp
 
         private void toolStripBntPdf_Click(object sender, EventArgs e)
         {
-          //  controlador.GerarPdf(); // criar o metodo ainda
+            controlador.PDF();
         }
 
         private void ConfigurarBotoes(ConfiguracaoToolboxBase configuracao)
@@ -98,7 +98,7 @@ namespace TesteMariana.WinApp
             toolStripBtnInserir.Enabled = configuracao.InserirHabilitado;
             toolStripBntEditar.Enabled = configuracao.EditarHabilitado;
             toolStripBntExcluir.Enabled = configuracao.ExcluirHabilitado;
-            // toolStripBntPdf.Enabled = configuracao.AdicionarItensHabilitado;  // botao adicionar PDF
+            toolStripBntPdf.Enabled = configuracao.TooltipGerarpdfHabilitado;  // botao adicionar PDF
 
         }
 
@@ -107,7 +107,7 @@ namespace TesteMariana.WinApp
             toolStripBtnInserir.ToolTipText = configuracao.TooltipInserir;
             toolStripBntEditar.ToolTipText = configuracao.TooltipEditar;
             toolStripBntExcluir.ToolTipText = configuracao.TooltipExcluir;
-           // toolStripBntPdf.ToolTipText = configuracao.TooltipAdicionarItens;  // botao adicionar PDF
+           toolStripBntPdf.ToolTipText = configuracao.TooltipGerarPdf;  // botao adicionar PDF
         
         }
 
@@ -128,7 +128,7 @@ namespace TesteMariana.WinApp
 
             if (configuracao != null)
             {
-                toolbox.Enabled = true;
+                toolbox1.Enabled = true;
 
                 labelTipoCadastro.Text = configuracao.TipoCadastro;
 
@@ -161,15 +161,13 @@ namespace TesteMariana.WinApp
 
             controladores = new Dictionary<string, ControladorBase>();
 
-            controladores.Add("Teste", new ControladorTeste(repositorioTeste));
-            controladores.Add("Questao", new ControladorQuestao(repositorioQuestao));
-            controladores.Add("Materia", new ControladorMateria(repositorioMateria));
+            controladores.Add("Teste", new ControladorTeste(repositorioTeste,repositorioQuestao, repositorioMateria,repositorioDisciplina));
+            controladores.Add("Questões", new ControladorQuestao(repositorioQuestao, repositorioMateria, repositorioDisciplina));
+            controladores.Add("Materia", new ControladorMateria(repositorioMateria, repositorioDisciplina));
             controladores.Add("Disciplina", new ControladorDisciplina(repositorioDisciplina));
 
         }
 
-
-
-
+      
     }
 }

@@ -45,9 +45,10 @@
             // btnCancelar
             // 
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelar.Location = new System.Drawing.Point(198, 223);
+            this.btnCancelar.Location = new System.Drawing.Point(283, 372);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(72, 39);
+            this.btnCancelar.Size = new System.Drawing.Size(103, 65);
             this.btnCancelar.TabIndex = 11;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -55,66 +56,63 @@
             // btnGravar
             // 
             this.btnGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnGravar.Location = new System.Drawing.Point(117, 223);
+            this.btnGravar.Location = new System.Drawing.Point(167, 372);
+            this.btnGravar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnGravar.Name = "btnGravar";
-            this.btnGravar.Size = new System.Drawing.Size(72, 39);
+            this.btnGravar.Size = new System.Drawing.Size(103, 65);
             this.btnGravar.TabIndex = 10;
             this.btnGravar.Text = "Gravar";
             this.btnGravar.UseVisualStyleBackColor = true;
+            this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(40, 22);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(57, 37);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 15);
+            this.label1.Size = new System.Drawing.Size(81, 25);
             this.label1.TabIndex = 12;
             this.label1.Text = "Número:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(51, 45);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(73, 75);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 15);
+            this.label2.Size = new System.Drawing.Size(65, 25);
             this.label2.TabIndex = 13;
             this.label2.Text = "Nome:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(33, 66);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(47, 110);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 15);
+            this.label3.Size = new System.Drawing.Size(91, 25);
             this.label3.TabIndex = 14;
             this.label3.Text = "Disciplina:";
             // 
             // txtBoxNumero
             // 
-            this.txtBoxNumero.Location = new System.Drawing.Point(101, 22);
-            this.txtBoxNumero.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBoxNumero.Enabled = false;
+            this.txtBoxNumero.Location = new System.Drawing.Point(144, 37);
             this.txtBoxNumero.Name = "txtBoxNumero";
-            this.txtBoxNumero.Size = new System.Drawing.Size(83, 23);
+            this.txtBoxNumero.Size = new System.Drawing.Size(117, 31);
             this.txtBoxNumero.TabIndex = 16;
             // 
             // textBoxNome
             // 
-            this.textBoxNome.Location = new System.Drawing.Point(101, 44);
-            this.textBoxNome.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxNome.Location = new System.Drawing.Point(144, 73);
             this.textBoxNome.Name = "textBoxNome";
-            this.textBoxNome.Size = new System.Drawing.Size(199, 23);
+            this.textBoxNome.Size = new System.Drawing.Size(283, 31);
             this.textBoxNome.TabIndex = 17;
             // 
             // radioButtonSerieUm
             // 
             this.radioButtonSerieUm.AutoSize = true;
-            this.radioButtonSerieUm.Location = new System.Drawing.Point(4, 18);
-            this.radioButtonSerieUm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radioButtonSerieUm.Location = new System.Drawing.Point(6, 30);
             this.radioButtonSerieUm.Name = "radioButtonSerieUm";
-            this.radioButtonSerieUm.Size = new System.Drawing.Size(59, 19);
+            this.radioButtonSerieUm.Size = new System.Drawing.Size(90, 29);
             this.radioButtonSerieUm.TabIndex = 18;
             this.radioButtonSerieUm.TabStop = true;
             this.radioButtonSerieUm.Text = "1 Série";
@@ -123,10 +121,9 @@
             // radioButtonSerieDois
             // 
             this.radioButtonSerieDois.AutoSize = true;
-            this.radioButtonSerieDois.Location = new System.Drawing.Point(85, 18);
-            this.radioButtonSerieDois.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radioButtonSerieDois.Location = new System.Drawing.Point(121, 30);
             this.radioButtonSerieDois.Name = "radioButtonSerieDois";
-            this.radioButtonSerieDois.Size = new System.Drawing.Size(59, 19);
+            this.radioButtonSerieDois.Size = new System.Drawing.Size(90, 29);
             this.radioButtonSerieDois.TabIndex = 19;
             this.radioButtonSerieDois.TabStop = true;
             this.radioButtonSerieDois.Text = "2 Série";
@@ -135,31 +132,27 @@
             // comboBoxDisciplina
             // 
             this.comboBoxDisciplina.FormattingEnabled = true;
-            this.comboBoxDisciplina.Location = new System.Drawing.Point(101, 67);
-            this.comboBoxDisciplina.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxDisciplina.Location = new System.Drawing.Point(144, 112);
             this.comboBoxDisciplina.Name = "comboBoxDisciplina";
-            this.comboBoxDisciplina.Size = new System.Drawing.Size(129, 23);
+            this.comboBoxDisciplina.Size = new System.Drawing.Size(183, 33);
             this.comboBoxDisciplina.TabIndex = 20;
-            this.comboBoxDisciplina.SelectedIndexChanged += new System.EventHandler(this.comboBoxDisciplina_SelectedIndexChanged);
             // 
             // groupBox
             // 
             this.groupBox.Controls.Add(this.radioButtonSerieDois);
             this.groupBox.Controls.Add(this.radioButtonSerieUm);
-            this.groupBox.Location = new System.Drawing.Point(66, 98);
-            this.groupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox.Location = new System.Drawing.Point(94, 163);
             this.groupBox.Name = "groupBox";
-            this.groupBox.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox.Size = new System.Drawing.Size(210, 41);
+            this.groupBox.Size = new System.Drawing.Size(300, 68);
             this.groupBox.TabIndex = 21;
             this.groupBox.TabStop = false;
             this.groupBox.Text = "Série:";
             // 
             // TelaCadastroMateriaForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(560, 270);
+            this.ClientSize = new System.Drawing.Size(562, 485);
             this.Controls.Add(this.groupBox);
             this.Controls.Add(this.comboBoxDisciplina);
             this.Controls.Add(this.textBoxNome);
@@ -169,7 +162,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGravar);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "TelaCadastroMateriaForm";
             this.Text = "Tela Cadastro Matéria";
             this.groupBox.ResumeLayout(false);

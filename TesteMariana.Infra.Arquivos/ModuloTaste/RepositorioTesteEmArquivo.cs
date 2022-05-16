@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TesteMariana.Dominio.ModuloTeste;
 using TesteMariana.Infra.Arquivos.Compartilhado;
+using FluentValidation;
 
 namespace TesteMariana.Infra.Arquivos.ModuloTeste
 {

@@ -11,7 +11,7 @@ namespace TesteMariana.WinApp.ModuloDiscliplina
 {
     public class ControladorDisciplina : ControladorBase
     {
-        private IRepositorioDisciplina repositorioDisciplina;
+        private readonly IRepositorioDisciplina repositorioDisciplina;
         private TabelaDisciplinaControl tabelaDisciplina;
 
         public ControladorDisciplina(IRepositorioDisciplina repositorioDisciplina)
@@ -92,8 +92,17 @@ namespace TesteMariana.WinApp.ModuloDiscliplina
 
         public override ConfiguracaoToolboxBase ObtemConfiguracaoToolbox()
         {
-            return new ConfiguracaoToolboxDisciplina();
+            return new ConfiguracaoToolBoxDisciplina();
         }
+
+
+        private Disciplina ObtemDisciplinaSelecionada()
+        {
+            var numero = tabelaDisciplina.ObtemNumeroDisciplinaSelecionada();
+
+            return repositorioDisciplina.SelecionarPorNumero(numero);
+        }
+
 
         private void CarregarDisciplina()
         {
@@ -106,7 +115,10 @@ namespace TesteMariana.WinApp.ModuloDiscliplina
         }
 
 
-
+        public override void PDF()
+        {
+            throw new NotImplementedException();
+        }
 
 
     }

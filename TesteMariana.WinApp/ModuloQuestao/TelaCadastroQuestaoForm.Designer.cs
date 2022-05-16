@@ -38,7 +38,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtBoxEnunciado = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBoxNome = new System.Windows.Forms.TextBox();
+            this.txtBoxResposta = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnAdicionarResposta = new System.Windows.Forms.Button();
             this.checkBoxAlternativaCorreta = new System.Windows.Forms.CheckBox();
@@ -48,156 +48,149 @@
             // btnCancelar
             // 
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelar.Location = new System.Drawing.Point(283, 335);
+            this.btnCancelar.Location = new System.Drawing.Point(404, 558);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(72, 39);
+            this.btnCancelar.Size = new System.Drawing.Size(103, 65);
             this.btnCancelar.TabIndex = 9;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGravar
             // 
             this.btnGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnGravar.Location = new System.Drawing.Point(202, 335);
+            this.btnGravar.Location = new System.Drawing.Point(289, 558);
+            this.btnGravar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnGravar.Name = "btnGravar";
-            this.btnGravar.Size = new System.Drawing.Size(72, 39);
+            this.btnGravar.Size = new System.Drawing.Size(103, 65);
             this.btnGravar.TabIndex = 8;
             this.btnGravar.Text = "Gravar";
             this.btnGravar.UseVisualStyleBackColor = true;
+            this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
             // comboBoxDisciplina
             // 
             this.comboBoxDisciplina.FormattingEnabled = true;
-            this.comboBoxDisciplina.Location = new System.Drawing.Point(109, 41);
-            this.comboBoxDisciplina.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxDisciplina.Location = new System.Drawing.Point(156, 68);
             this.comboBoxDisciplina.Name = "comboBoxDisciplina";
-            this.comboBoxDisciplina.Size = new System.Drawing.Size(129, 23);
+            this.comboBoxDisciplina.Size = new System.Drawing.Size(183, 33);
             this.comboBoxDisciplina.TabIndex = 26;
+            this.comboBoxDisciplina.SelectedValueChanged += new System.EventHandler(this.comboBoxDisciplina_SelectedValueChanged);
             // 
             // txtBoxNumero
             // 
-            this.txtBoxNumero.Location = new System.Drawing.Point(109, 19);
-            this.txtBoxNumero.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBoxNumero.Enabled = false;
+            this.txtBoxNumero.Location = new System.Drawing.Point(156, 32);
             this.txtBoxNumero.Name = "txtBoxNumero";
-            this.txtBoxNumero.Size = new System.Drawing.Size(83, 23);
+            this.txtBoxNumero.Size = new System.Drawing.Size(117, 31);
             this.txtBoxNumero.TabIndex = 24;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(41, 45);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(59, 75);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 15);
+            this.label3.Size = new System.Drawing.Size(91, 25);
             this.label3.TabIndex = 23;
             this.label3.Text = "Disciplina:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(48, 19);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(69, 32);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 15);
+            this.label1.Size = new System.Drawing.Size(81, 25);
             this.label1.TabIndex = 21;
             this.label1.Text = "Número:";
             // 
             // comboBoxMateria
             // 
             this.comboBoxMateria.FormattingEnabled = true;
-            this.comboBoxMateria.Location = new System.Drawing.Point(109, 65);
-            this.comboBoxMateria.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxMateria.Location = new System.Drawing.Point(156, 108);
             this.comboBoxMateria.Name = "comboBoxMateria";
-            this.comboBoxMateria.Size = new System.Drawing.Size(129, 23);
+            this.comboBoxMateria.Size = new System.Drawing.Size(183, 33);
             this.comboBoxMateria.TabIndex = 28;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(52, 67);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(74, 112);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 15);
+            this.label2.Size = new System.Drawing.Size(75, 25);
             this.label2.TabIndex = 27;
             this.label2.Text = "Matéria:";
             // 
             // txtBoxEnunciado
             // 
-            this.txtBoxEnunciado.Location = new System.Drawing.Point(109, 89);
-            this.txtBoxEnunciado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBoxEnunciado.Location = new System.Drawing.Point(156, 148);
             this.txtBoxEnunciado.Name = "txtBoxEnunciado";
-            this.txtBoxEnunciado.Size = new System.Drawing.Size(247, 23);
+            this.txtBoxEnunciado.Size = new System.Drawing.Size(351, 31);
             this.txtBoxEnunciado.TabIndex = 30;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(36, 91);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(51, 152);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(66, 15);
+            this.label4.Size = new System.Drawing.Size(98, 25);
             this.label4.TabIndex = 29;
             this.label4.Text = "Enunciado:";
             // 
-            // textBoxNome
+            // txtBoxResposta
             // 
-            this.textBoxNome.Location = new System.Drawing.Point(92, 151);
-            this.textBoxNome.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBoxNome.Name = "textBoxNome";
-            this.textBoxNome.Size = new System.Drawing.Size(183, 23);
-            this.textBoxNome.TabIndex = 32;
+            this.txtBoxResposta.Location = new System.Drawing.Point(131, 252);
+            this.txtBoxResposta.Name = "txtBoxResposta";
+            this.txtBoxResposta.Size = new System.Drawing.Size(260, 31);
+            this.txtBoxResposta.TabIndex = 32;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(26, 152);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(37, 253);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(57, 15);
+            this.label5.Size = new System.Drawing.Size(88, 25);
             this.label5.TabIndex = 31;
             this.label5.Text = "Resposta:";
             // 
             // btnAdicionarResposta
             // 
-            this.btnAdicionarResposta.Location = new System.Drawing.Point(283, 151);
-            this.btnAdicionarResposta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAdicionarResposta.Location = new System.Drawing.Point(404, 252);
             this.btnAdicionarResposta.Name = "btnAdicionarResposta";
-            this.btnAdicionarResposta.Size = new System.Drawing.Size(73, 20);
+            this.btnAdicionarResposta.Size = new System.Drawing.Size(104, 33);
             this.btnAdicionarResposta.TabIndex = 33;
             this.btnAdicionarResposta.Text = "Adicionar";
             this.btnAdicionarResposta.UseVisualStyleBackColor = true;
+            this.btnAdicionarResposta.Click += new System.EventHandler(this.btnAdicionarResposta_Click);
             // 
             // checkBoxAlternativaCorreta
             // 
             this.checkBoxAlternativaCorreta.AutoSize = true;
-            this.checkBoxAlternativaCorreta.Location = new System.Drawing.Point(92, 180);
-            this.checkBoxAlternativaCorreta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxAlternativaCorreta.Location = new System.Drawing.Point(131, 300);
             this.checkBoxAlternativaCorreta.Name = "checkBoxAlternativaCorreta";
-            this.checkBoxAlternativaCorreta.Size = new System.Drawing.Size(125, 19);
+            this.checkBoxAlternativaCorreta.Size = new System.Drawing.Size(185, 29);
             this.checkBoxAlternativaCorreta.TabIndex = 34;
             this.checkBoxAlternativaCorreta.Text = "Alternativa Correta";
             this.checkBoxAlternativaCorreta.UseVisualStyleBackColor = true;
-            this.checkBoxAlternativaCorreta.CheckedChanged += new System.EventHandler(this.checkBoxAlternativaCorreta_CheckedChanged);
             // 
             // listBoxRespostas
             // 
             this.listBoxRespostas.FormattingEnabled = true;
-            this.listBoxRespostas.ItemHeight = 15;
-            this.listBoxRespostas.Location = new System.Drawing.Point(36, 203);
-            this.listBoxRespostas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBoxRespostas.ItemHeight = 25;
+            this.listBoxRespostas.Location = new System.Drawing.Point(51, 338);
             this.listBoxRespostas.Name = "listBoxRespostas";
-            this.listBoxRespostas.Size = new System.Drawing.Size(311, 124);
+            this.listBoxRespostas.Size = new System.Drawing.Size(443, 204);
             this.listBoxRespostas.TabIndex = 35;
             // 
             // TelaCadastroQuestaoForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(364, 383);
+            this.ClientSize = new System.Drawing.Size(520, 638);
             this.Controls.Add(this.listBoxRespostas);
             this.Controls.Add(this.checkBoxAlternativaCorreta);
             this.Controls.Add(this.btnAdicionarResposta);
-            this.Controls.Add(this.textBoxNome);
+            this.Controls.Add(this.txtBoxResposta);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtBoxEnunciado);
             this.Controls.Add(this.label4);
@@ -209,7 +202,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGravar);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "TelaCadastroQuestaoForm";
             this.Text = "Tela Cadastro Questao";
             this.ResumeLayout(false);
@@ -229,7 +221,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtBoxEnunciado;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBoxNome;
+        private System.Windows.Forms.TextBox txtBoxResposta;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnAdicionarResposta;
         private System.Windows.Forms.CheckBox checkBoxAlternativaCorreta;

@@ -1,6 +1,6 @@
-﻿namespace TesteMariana.WinApp.ModuloQuestao
+﻿namespace TesteMariana.WinApp.ModuloTeste
 {
-    partial class TabelaQuestaoControl
+    partial class TabelaTesteControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -43,17 +43,16 @@
             this.grid.ReadOnly = true;
             this.grid.RowHeadersWidth = 62;
             this.grid.RowTemplate.Height = 33;
-            this.grid.Size = new System.Drawing.Size(634, 558);
+            this.grid.Size = new System.Drawing.Size(464, 442);
             this.grid.TabIndex = 0;
             // 
-            // TabelaQuestaoControl
+            // TabelaTesteControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.grid);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "TabelaQuestaoControl";
-            this.Size = new System.Drawing.Size(634, 558);
+            this.Name = "TabelaTesteControl";
+            this.Size = new System.Drawing.Size(464, 442);
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.ResumeLayout(false);
 

@@ -17,8 +17,7 @@ namespace TesteMariana.Dominio.ModuloTeste
             RuleFor(x => x.NumeroQuestoes)
                .NotNull().NotEmpty(); // metodo para nao deixar o campo NumeroQuestoes vazio nem nulo
 
-            RuleFor(x => x.Data)
-               .NotNull().NotEmpty().GreaterThanOrEqualTo((x) => DateTime.Now.Date);  // metodo para nao deixar o campo Data vazio nem nulo, nem criar na data anterior
+             
 
         }
 

@@ -11,27 +11,16 @@ namespace TesteMariana.Dominio.ModuloQuestao
 {
     public class Questao : EntidadeBase<Questao>
     {
+
+        public List<Alternativas> alternativas;
+        public Disciplina disciplina { get; set; }
+        public Materia materia { get; set; }
+        public string Nome { get; set; }
+
         public Questao()
         {
+            alternativas = new List<Alternativas>();
         }
-
-
-        public Questao(Disciplina disciplina, Materia materia, string enunciado, string resposta)
-        {
-            this.disciplina = disciplina;
-            this.materia = materia;
-            Enunciado = enunciado;
-            Resposta = resposta;
-        }
-
-
-        Disciplina disciplina;
-        Materia materia;
-        public string  Enunciado { get; set; }
-        public string  Resposta { get; set; }
-
-        
-
         public override void Atualizar(Questao registro)
         {
         }

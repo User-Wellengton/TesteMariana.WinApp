@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using TesteMariana.Dominio.ModuloDisciplina;
 using TesteMariana.Dominio.ModuloMateria;
 using TesteMariana.WinApp.Compartilhado;
+using TesteMariana.WinApp.ModuloDiscliplina;
 
 namespace TesteMariana.WinApp.ModuloMateria
 {
@@ -88,16 +89,42 @@ namespace TesteMariana.WinApp.ModuloMateria
             }
         }
 
+        public override UserControl ObtemListagem()
+        {
+            if (tabelaMateria == null)
+                tabelaMateria = new TabelaMateriaControl();
+
+            CarregarMateria();
+
+            return tabelaMateria;
+        }
+
+        public override ConfiguracaoToolboxBase ObtemConfiguracaoToolbox()
+        {
+            return new ConfiguracaoToolBoxMateria();
+        }
+
+        private Materia ObtemMateriaSelecionado()
+        {
+            var numero = tabelaMateria.ObtemNumeroMateriaSelecionado();
+
+            return repositorioMateria.SelecionarPorNumero(numero);
+        }
+
+        private void CarregarMateria()
+        {
+            List<Materia> materias = repositorioMateria.SelecionarTodos();
+
+            tabelaMateria.AtualizarRegistros(materias);
+
+            TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {materias.Count} materias(s)");
+        }
 
 
-
-
-
-
-
-
-
-
+        public override void PDF()
+        {
+            throw new NotImplementedException();
+        }
 
 
     }
