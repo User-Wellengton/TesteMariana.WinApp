@@ -50,7 +50,7 @@ namespace TesteMariana.WinApp.ModuloQuestao
 
             foreach (var item in materias)
             {
-                if (item.disciplina == (Disciplina)comboBoxDisciplina.SelectedItem)
+                if (item.disciplina.Equals(comboBoxDisciplina.SelectedItem))
                 {
                     comboBoxMateria.Items.Add(item);
                 }

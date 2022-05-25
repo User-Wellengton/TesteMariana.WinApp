@@ -39,7 +39,6 @@ namespace TesteMariana.Infra.BancoDados.ModuloMateria
 			        [TITULO] = @TITULO,
 			       [SERIE] = @SERIE,
                     [DISCIPLINA_NUMERO] = @DISCIPLINA_NUMERO
-
 		        WHERE
 			        [NUMERO] = @NUMERO";
 
@@ -56,8 +55,7 @@ namespace TesteMariana.Infra.BancoDados.ModuloMateria
                     MT.DISCIPLINA_NUMERO,
                     
                     D.ID AS DISCIPLINA_NUMERO,
-		            D.TITULO AS DISCIPLINA_NOME
-
+		            D.TITULO AS DISCIPLINA_TITULO
               FROM 
                   TBMATERIA AS MT INNER JOIN 
                   TBDISCIPLINA AS D ON
@@ -69,11 +67,9 @@ namespace TesteMariana.Infra.BancoDados.ModuloMateria
 		            M.[NUMERO], 
 		            M.[TITULO],
                     M.[SERIE],
-                    M.[DISCIPLINA_NUMERO],
-
-					D.[Titulo]
+                    M.[DISCIPLINA_NUMERO], 
+					D.[Titulo] as DISCIPLINA_TITULO
                     
-
         FROM 
 		            [TBMateria] as M inner join TBDisciplina as D on M.Disciplina_Numero = D.Id
 		        WHERE
@@ -81,6 +77,8 @@ namespace TesteMariana.Infra.BancoDados.ModuloMateria
 
 
         #endregion
+
+
         public ValidationResult Inserir(Materia materia)
         {
 
@@ -188,7 +186,7 @@ namespace TesteMariana.Infra.BancoDados.ModuloMateria
             int serie = Convert.ToInt32(leitorMateria["SERIE"]);
 
             int numeroDisciplina = Convert.ToInt32(leitorMateria["DISCIPLINA_NUMERO"]);
-            string nomeDisciplina = Convert.ToString(leitorMateria["TITULO"]);
+            string nomeDisciplina = Convert.ToString(leitorMateria["DISCIPLINA_TITULO"]);
 
             var materia = new Materia
             {

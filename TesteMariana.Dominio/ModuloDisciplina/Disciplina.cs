@@ -20,6 +20,14 @@ namespace TesteMariana.Dominio.ModuloDisciplina
         {
         }
 
+        public override bool Equals(object obj)
+        {
+            return obj is Disciplina disciplina &&
+                   Id == disciplina.Id &&
+                 
+                   Nome == disciplina.Nome;
+        }
+
         public override string ToString()
         {
             return $"{Nome}";

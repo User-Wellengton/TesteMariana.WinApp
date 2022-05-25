@@ -20,6 +20,7 @@ using TesteMariana.WinApp.ModuloMateria;
 using TesteMariana.WinApp.ModuloDiscliplina;
 using TesteMariana.Infra.BancoDados.ModuloDisciplina;
 using TesteMariana.Infra.BancoDados.ModuloMateria;
+using TesteMariana.Infra.BancoDados.ModuloQuestao;
 
 namespace TesteMariana.WinApp
 {
@@ -157,7 +158,8 @@ namespace TesteMariana.WinApp
         {
 
             var repositorioTeste = new RepositorioTesteEmArquivo(contextoDados);
-            var repositorioQuestao = new RepositorioQuestaoEmArquivo(contextoDados);
+
+            var repositorioQuestao = new RepositorioQuestaoEmBancoDados();
             var repositorioMateria = new RepositorioMateriaEmBancoDados();
 
             var repositorioDisciplina = new RepositorioDisciplinaEmBancoDados();

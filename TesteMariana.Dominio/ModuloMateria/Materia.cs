@@ -21,9 +21,21 @@ namespace TesteMariana.Dominio.ModuloMateria
         public override void Atualizar(Materia registro)
         {
         }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Materia materia &&
+                   Id == materia.Id &&
+               
+                   Serie == materia.Serie &&
+                   Nome == materia.Nome;
+        }
+
         public override string ToString()
         {
             return Nome;
         }
+
+
     }
 }
