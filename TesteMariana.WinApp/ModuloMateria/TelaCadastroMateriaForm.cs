@@ -71,7 +71,7 @@ namespace TesteMariana.WinApp.ModuloMateria
         {
             materia.Nome = textBoxNome.Text;
             materia.disciplina = (Disciplina)comboBoxDisciplina.SelectedItem;
-
+            
             if (radioButtonSerieUm.Checked)
             {
                 materia.Serie = SerieEnum.Primeira;

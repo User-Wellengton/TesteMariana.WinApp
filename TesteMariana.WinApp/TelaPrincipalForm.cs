@@ -19,7 +19,7 @@ using TesteMariana.WinApp.ModuloTeste;
 using TesteMariana.WinApp.ModuloMateria;
 using TesteMariana.WinApp.ModuloDiscliplina;
 using TesteMariana.Infra.BancoDados.ModuloDisciplina;
-using TesteMariana.Infra.BancoDados.ModuloMataria;
+using TesteMariana.Infra.BancoDados.ModuloMateria;
 
 namespace TesteMariana.WinApp
 {

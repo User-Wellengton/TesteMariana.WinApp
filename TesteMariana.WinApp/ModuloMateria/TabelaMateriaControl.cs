@@ -31,6 +31,8 @@ namespace TesteMariana.WinApp.ModuloMateria
                 new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome"},                
 
                  new DataGridViewTextBoxColumn { DataPropertyName = "Disciplina", HeaderText = "Disciplina"},
+
+                 new DataGridViewTextBoxColumn { DataPropertyName = "Serie", HeaderText = "Serie"},
             };
 
             return colunas;
@@ -47,8 +49,7 @@ namespace TesteMariana.WinApp.ModuloMateria
 
             foreach (var materia in materias)
             {
-                grid.Rows.Add(materia.Id, materia.Nome,
-                   materia.disciplina.Nome);
+                grid.Rows.Add(materia.Id, materia.Nome, materia.disciplina.Nome, materia.Serie);
             }
         }
 

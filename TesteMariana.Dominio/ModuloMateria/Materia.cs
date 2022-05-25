@@ -16,7 +16,7 @@ namespace TesteMariana.Dominio.ModuloMateria
         public List<Questao> questoes { get; set; }
         public SerieEnum Serie { get; set; }
         public string Nome { get; set; }
-
+        
 
         public override void Atualizar(Materia registro)
         {

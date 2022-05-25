@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using TesteMariana.Dominio.Compartilhado;
 
 namespace TesteMariana.Infra.BancoDados.ModuloDisciplina
 {
@@ -200,7 +200,5 @@ namespace TesteMariana.Infra.BancoDados.ModuloDisciplina
         {
             throw new NotImplementedException();
         }
-
-
     }
 }

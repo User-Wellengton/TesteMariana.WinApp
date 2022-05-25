@@ -7,8 +7,9 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TesteMariana.Dominio.Compartilhado;
 
-namespace TesteMariana.Infra.BancoDados.ModuloMataria
+namespace TesteMariana.Infra.BancoDados.ModuloMateria
 {
     public class RepositorioMateriaEmBancoDados : IRepositorioMateria
     {
@@ -65,11 +66,16 @@ namespace TesteMariana.Infra.BancoDados.ModuloMataria
 
         private const string sqlSelecionarPorNumero =
            @"SELECT 
-		            [NUMERO], 
-		            [TITULO] 
-		         
-	            FROM 
-		            [TBMateria]
+		            M.[NUMERO], 
+		            M.[TITULO],
+                    M.[SERIE],
+                    M.[DISCIPLINA_NUMERO],
+
+					D.[Titulo]
+                    
+
+        FROM 
+		            [TBMateria] as M inner join TBDisciplina as D on M.Disciplina_Numero = D.Id
 		        WHERE
                     [NUMERO] = @NUMERO";
 
@@ -182,7 +188,7 @@ namespace TesteMariana.Infra.BancoDados.ModuloMataria
             int serie = Convert.ToInt32(leitorMateria["SERIE"]);
 
             int numeroDisciplina = Convert.ToInt32(leitorMateria["DISCIPLINA_NUMERO"]);
-            string nomeDisciplina = Convert.ToString(leitorMateria["DISCIPLINA_NOME"]);
+            string nomeDisciplina = Convert.ToString(leitorMateria["TITULO"]);
 
             var materia = new Materia
             {
@@ -209,7 +215,6 @@ namespace TesteMariana.Infra.BancoDados.ModuloMataria
             comandoInsercao.Parameters.AddWithValue("DISCIPLINA_NUMERO", materia.disciplina.Id);
 
         }
-
 
     }
 }
