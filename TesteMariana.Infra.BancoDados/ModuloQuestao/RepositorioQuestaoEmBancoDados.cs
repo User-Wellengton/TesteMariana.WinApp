@@ -23,13 +23,17 @@ namespace TesteMariana.Infra.BancoDados.ModuloQuestao
         #region Sql Queries
         private const string sqlInserir =
             @"INSERT INTO [TBQUESTAO]
-             [ENUNCIADO]
-           ,[DISCIPLINA_NUMERO]
-           ,[MATERIA_NUMERO]
-     VALUES
-           @ENUNCIADO
-           ,@DISCIPLINA_NUMERO
-           ,@MATERIA_NUMERO;
+            
+                    ([Enunciado]
+                    ,[Disciplina_Numero]
+                    ,[Materia_Numero])
+
+            VALUES
+
+                (@Enunciado,
+                @Disciplina_Numero,
+                @Materia_Numero);
+
             SELECT SCOPE_IDENTITY();";
 
         private const string sqlEditar =
@@ -47,7 +51,9 @@ namespace TesteMariana.Infra.BancoDados.ModuloQuestao
 
         private const string sqlExcluir =
             @"DELETE FROM [TBQuestao]
+
 		        WHERE
+
 			        [NUMERO] = @NUMERO";
 
         private const string sqlSelecionarTodos =
@@ -76,7 +82,7 @@ namespace TesteMariana.Infra.BancoDados.ModuloQuestao
 
         private const string sqlSelecionarPorNumero =
            @"SELECT 
-		             Q.NUMERO,
+		            Q.NUMERO,
                     Q.ENUNCIADO,
                     Q.DISCIPLINA_NUMERO,
                     Q.MATERIA_NUMERO,
@@ -96,7 +102,7 @@ namespace TesteMariana.Infra.BancoDados.ModuloQuestao
                  QT.MATERIA_NUMERO = M.NUMERO
 
             WHERE
-                    [NUMERO] = @NUMERO";
+                    Q.NUMERO = @NUMERO";
 
         #endregion
 
@@ -210,10 +216,10 @@ namespace TesteMariana.Infra.BancoDados.ModuloQuestao
             
 
             int numeroDisciplina = Convert.ToInt32(leitorQuestao["DISCIPLINA_NUMERO"]);
-            string nomeDisciplina = Convert.ToString(leitorQuestao["TITULO"]);
+            string nomeDisciplina = Convert.ToString(leitorQuestao["DISCIPLINA_NOME"]);
 
             int numeroMateria = Convert.ToInt32(leitorQuestao["MATERIA_NUMERO"]);
-            string nomeMateria = Convert.ToString(leitorQuestao["TITULO"]);
+            string nomeMateria = Convert.ToString(leitorQuestao["MATERIA_NOME"]);
 
             var questao = new Questao
             {
@@ -239,10 +245,8 @@ namespace TesteMariana.Infra.BancoDados.ModuloQuestao
 
         private static void ConfigurarParametrosQuestao(Questao questao, SqlCommand comandoInsercao)
         {
-
-
             comandoInsercao.Parameters.AddWithValue("NUMERO", questao.Id);
-            comandoInsercao.Parameters.AddWithValue("TITULO", questao.Nome);
+            comandoInsercao.Parameters.AddWithValue("ENUNCIADO", questao.Nome);
             
             comandoInsercao.Parameters.AddWithValue("DISCIPLINA_NUMERO", questao.disciplina.Id);
             comandoInsercao.Parameters.AddWithValue("MATERIA_NUMERO", questao.materia.Id);

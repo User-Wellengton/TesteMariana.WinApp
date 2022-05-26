@@ -68,6 +68,7 @@ namespace TesteMariana.Infra.BancoDados.ModuloMateria
 		            M.[TITULO],
                     M.[SERIE],
                     M.[DISCIPLINA_NUMERO], 
+
 					D.[Titulo] as DISCIPLINA_TITULO
                     
         FROM 
@@ -205,13 +206,10 @@ namespace TesteMariana.Infra.BancoDados.ModuloMateria
         }
         private static void ConfigurarParametrosMateria(Materia materia, SqlCommand comandoInsercao)
         {
-
-
             comandoInsercao.Parameters.AddWithValue("NUMERO", materia.Id);
             comandoInsercao.Parameters.AddWithValue("TITULO", materia.Nome);
             comandoInsercao.Parameters.AddWithValue("SERIE", materia.Serie);
             comandoInsercao.Parameters.AddWithValue("DISCIPLINA_NUMERO", materia.disciplina.Id);
-
         }
 
     }
