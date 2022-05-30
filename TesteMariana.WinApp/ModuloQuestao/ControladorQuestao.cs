@@ -49,6 +49,9 @@ namespace TesteMariana.WinApp.ModuloQuestao
 
             TelaCadastroQuestaoForm tela = new TelaCadastroQuestaoForm(disciplinas, materias, repositorioQuestao);
             tela.Questao = new Questao();
+            tela.Questao.disciplina = new Disciplina();
+            tela.Questao.materia = new Materia();
+            tela.Questao.alternativas = new List<Alternativas>();
 
             tela.GravarRegistro = repositorioQuestao.Inserir;
 
