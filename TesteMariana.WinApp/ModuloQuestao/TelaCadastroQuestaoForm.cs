@@ -87,14 +87,14 @@ namespace TesteMariana.WinApp.ModuloQuestao
         private void btnAdicionarResposta_Click(object sender, EventArgs e)
         {
 
-            List<string> titulos = AlternativasAdicionadas.Select(x => x.Resposta).ToList();
+            List<string> titulos = AlternativasAdicionadas.Select(x => x.Opcao).ToList();
 
             if (titulos.Count == 0 || titulos.Contains(txtBoxResposta.Text) == false)
             {
                 Alternativas alternativa = new();
 
-                alternativa.Resposta = txtBoxResposta.Text;
-
+                alternativa.Opcao = txtBoxResposta.Text;
+                alternativa.Correta = checkBoxAlternativaCorreta.Checked;
                 alternativas.Add(alternativa);
 
                 listBoxRespostas.Items.Add(alternativa);

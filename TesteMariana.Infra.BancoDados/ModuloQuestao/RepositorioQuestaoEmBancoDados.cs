@@ -36,18 +36,48 @@ namespace TesteMariana.Infra.BancoDados.ModuloQuestao
 
             SELECT SCOPE_IDENTITY();";
 
+        private const string sqlInserirAlternativas =
+            @"INSERT INTO [TBALTERNATIVA]
+
+                ([Opção],
+                [Correta],
+                [Questao_Numero])
+
+            VALUES
+
+                (@Opção],
+                 @Correta],
+                 @Questao_Numero]);
+
+            SELECT SCOPE_IDENTITY();";
+
+
+
         private const string sqlEditar =
            @"UPDATE [TBQuestao]
 
-		        SET
+		   SET
 
 			       [ENUNCIADO] = @ENUNCIADO,
 			       [DISCIPLINA_NUMERO] = @DISCIPLINA_NUMERO,
                    [MATERIA_NUMERO] = @MATERIA_NUMERO
 
-		        WHERE
+		   WHERE
 
 			        [NUMERO] = @NUMERO";
+
+        private const string sqlEditarAlternativa =
+            @"UPDATE [TBALTERNATIVA]
+                
+            SET
+                    OPCAO = @OPCAO,
+                    CORRETA = @CORRETA,
+                    QUESTAO_NUMERO = @QUESTAO_NUMERO
+
+                WHERE
+                    NUMERO = @NUMERO";
+
+
 
         private const string sqlExcluir =
             @"DELETE FROM [TBQuestao]
@@ -55,6 +85,12 @@ namespace TesteMariana.Infra.BancoDados.ModuloQuestao
 		        WHERE
 
 			        [NUMERO] = @NUMERO";
+
+        private const string sqlExcluirAlternativas =
+            @"DELETE FROM [TBALTERNATIVA]
+                WHERE
+                    QUESTAO_NUMERO = @NUMERO";
+
 
         private const string sqlSelecionarTodos =
            @"SELECT 
@@ -74,8 +110,8 @@ namespace TesteMariana.Infra.BancoDados.ModuloQuestao
                   TBQUESTAO AS Q INNER JOIN TBDISCIPLINA AS D ON
                   Q.DISCIPLINA_NUMERO = D.ID,
 
-                 TBQUESTAO AS QT INNER JOIN TBMATERIA AS M ON
-                 QT.MATERIA_NUMERO = M.NUMERO";
+                  TBQUESTAO AS QT INNER JOIN TBMATERIA AS M ON
+                  QT.MATERIA_NUMERO = M.NUMERO";
 
 
 
@@ -104,6 +140,21 @@ namespace TesteMariana.Infra.BancoDados.ModuloQuestao
             WHERE
                     Q.NUMERO = @NUMERO";
 
+
+        private const string sqlSelecionarAlternativasDaQuestao =
+            @"SELECT
+                    A.NUMERO AS NUMERO,
+	                A.OPCAO AS OPCAO,
+	                A.CORRETA AS CORRETA,
+                    Q.NUMERO AS NUMEROQUESTAO
+                FROM 
+	                TBQUESTAO AS Q
+                INNER JOIN TBALTERNATIVA AS A
+	                ON A.QUESTAO_NUMERO = Q.NUMERO";
+
+
+
+
         #endregion
 
         public ValidationResult Inserir(Questao questao)
@@ -118,6 +169,19 @@ namespace TesteMariana.Infra.BancoDados.ModuloQuestao
             conexaoComBanco.Open();
             var id = comandoInsercao.ExecuteScalar();
             questao.Id = Convert.ToInt32(id);
+
+            SqlCommand comandoInsercaoAlternativa = new SqlCommand(sqlInserirAlternativas, conexaoComBanco);
+            int i = 0;
+            foreach (var alternativa in questao.alternativas)
+            {
+                comandoInsercaoAlternativa.Parameters.Clear();
+                ConfirugarParametrosAlternativas(alternativa, questao, comandoInsercaoAlternativa);
+                var idAlternativa = comandoInsercaoAlternativa.ExecuteScalar(); 
+                questao.alternativas[i].Id = Convert.ToInt32(idAlternativa);
+
+                i++;
+            }
+
 
             conexaoComBanco.Close();
 
@@ -135,12 +199,23 @@ namespace TesteMariana.Infra.BancoDados.ModuloQuestao
 
             SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
 
-            SqlCommand comandoEdicao = new SqlCommand(sqlEditar, conexaoComBanco);
+            SqlCommand comandoEdicaoQuestao = new SqlCommand(sqlEditar, conexaoComBanco);
 
-            ConfigurarParametrosQuestao(questao, comandoEdicao);
+            SqlCommand comandoEdicaoAlternativa = new SqlCommand(sqlEditarAlternativa, conexaoComBanco);
+
+            ConfigurarParametrosQuestao(questao, comandoEdicaoQuestao);
 
             conexaoComBanco.Open();
-            comandoEdicao.ExecuteNonQuery();
+
+            foreach (var alternativa in questao.alternativas)
+            {
+                comandoEdicaoAlternativa.Parameters.Clear();
+                ConfirugarParametrosAlternativas(alternativa, questao, comandoEdicaoAlternativa);
+                comandoEdicaoAlternativa.ExecuteNonQuery();
+            }
+
+
+            comandoEdicaoQuestao.ExecuteNonQuery();
             conexaoComBanco.Close();
 
             return resultadoValidacao;
@@ -209,6 +284,53 @@ namespace TesteMariana.Infra.BancoDados.ModuloQuestao
             return questao;
         }
 
+        public List<Alternativas> AdicionarAlternativa(int numero)
+        {
+            SqlConnection conexaoComBanco = new SqlConnection (enderecoBanco);
+
+            SqlCommand comandoSelecaoAlternativas = new SqlCommand (sqlSelecionarAlternativasDaQuestao, conexaoComBanco);
+
+            comandoSelecaoAlternativas.Parameters.AddWithValue("NUMERO", numero);
+
+            conexaoComBanco.Open();
+
+            SqlDataReader leitorAlternativa = comandoSelecaoAlternativas.ExecuteReader();
+
+            List<Alternativas> alternativas = new ();
+            while (leitorAlternativa.Read())
+                alternativas.Add(ConverterParaAlternativas(leitorAlternativa));
+
+            conexaoComBanco.Close();
+
+            return alternativas;
+        }
+
+
+        private Alternativas ConverterParaAlternativas(SqlDataReader leitorAlternativa)
+        {
+            int numeroAlternativa = Convert.ToInt32(leitorAlternativa["NUMERO"]);
+            string opcaoAlternativa = Convert.ToString(leitorAlternativa["OPÇÃO"]);
+            bool corretaAlternativa = Convert.ToBoolean(leitorAlternativa["CORRETA"]);
+
+            int numeroQuestao = Convert.ToInt32(leitorAlternativa["NUMEROQUESTAO"]);
+
+            return new Alternativas
+            {
+                Id = numeroAlternativa,
+                Opcao = opcaoAlternativa,
+                Correta = corretaAlternativa,
+
+                Questao = new Questao
+                {
+                    Id = numeroQuestao,
+                }
+            };
+
+
+        }
+
+
+
         private static Questao ConverterParaQuestao(SqlDataReader leitorQuestao)
         {
             int numero = Convert.ToInt32(leitorQuestao["NUMERO"]);
@@ -221,11 +343,14 @@ namespace TesteMariana.Infra.BancoDados.ModuloQuestao
             int numeroMateria = Convert.ToInt32(leitorQuestao["MATERIA_NUMERO"]);
             string nomeMateria = Convert.ToString(leitorQuestao["MATERIA_NOME"]);
 
+
+            List<Alternativas> alternativas = AdicionarAlternativa(numero);
+
             var questao = new Questao
             {
                 Id = numero,
                 Nome = titulo,
-               
+
                 disciplina = new Disciplina
                 {
                     Id = numeroDisciplina,
@@ -236,7 +361,7 @@ namespace TesteMariana.Infra.BancoDados.ModuloQuestao
                 {
                     Id = numeroMateria,
                     Nome = nomeMateria
-                }
+                },
 
             };
 
@@ -252,6 +377,15 @@ namespace TesteMariana.Infra.BancoDados.ModuloQuestao
             comandoInsercao.Parameters.AddWithValue("MATERIA_NUMERO", questao.materia.Id);
 
         }
+
+        private void ConfirugarParametrosAlternativas(Alternativas alternativa, Questao questao, SqlCommand comando)
+        {
+            comando.Parameters.AddWithValue("NUMERO", alternativa.Id);
+            comando.Parameters.AddWithValue("OPÇÃO", alternativa.Opcao);
+            comando.Parameters.AddWithValue("CORRETA", alternativa.Correta);
+            comando.Parameters.AddWithValue("QUESTAO_NUMERO", questao.Id);
+        }
+
 
     }
 }

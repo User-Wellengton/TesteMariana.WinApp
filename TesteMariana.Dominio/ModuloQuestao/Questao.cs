@@ -15,6 +15,7 @@ namespace TesteMariana.Dominio.ModuloQuestao
         public List<Alternativas> alternativas;
         public Disciplina disciplina { get; set; }
         public Materia materia { get; set; }
+        
         public string Nome { get; set; }
 
         public Questao()
