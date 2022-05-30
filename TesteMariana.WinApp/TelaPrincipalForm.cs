@@ -28,7 +28,7 @@ namespace TesteMariana.WinApp
     {
         private ControladorBase controlador;
         private Dictionary<string, ControladorBase> controladores;
-        private DataContext contextoDados;
+        //private DataContext contextoDados;
 
         public TelaPrincipalForm(DataContext contextoDados)
         {
@@ -39,7 +39,7 @@ namespace TesteMariana.WinApp
             labelRodape.Text = string.Empty;
             labelTipoCadastro.Text = string.Empty;
 
-            this.contextoDados = contextoDados;
+            //this.contextoDados = contextoDados;
 
             InicializarControladores();
 
@@ -110,8 +110,8 @@ namespace TesteMariana.WinApp
             toolStripBtnInserir.ToolTipText = configuracao.TooltipInserir;
             toolStripBntEditar.ToolTipText = configuracao.TooltipEditar;
             toolStripBntExcluir.ToolTipText = configuracao.TooltipExcluir;
-           toolStripBntPdf.ToolTipText = configuracao.TooltipGerarPdf;  // botao adicionar PDF
-        
+            toolStripBntPdf.ToolTipText = configuracao.TooltipGerarPdf;  // botao adicionar PDF
+
         }
 
         private void ConfigurarTelaPrincipal(ToolStripMenuItem opcaoSelecionada)
@@ -144,10 +144,10 @@ namespace TesteMariana.WinApp
         private void ConfigurarListagem()
         {
             AtualizarRodape("");
+            panelRegistros.Controls.Clear();
 
             var listagemControl = controlador.ObtemListagem();
-
-            panelRegistros.Controls.Clear();
+                        
 
             listagemControl.Dock = DockStyle.Fill;
 
@@ -157,8 +157,7 @@ namespace TesteMariana.WinApp
         private void InicializarControladores()
         {
 
-            var repositorioTeste = new RepositorioTesteEmArquivo(contextoDados);
-
+            //var repositorioTeste = new RepositorioTesteEmBancoDados();
             var repositorioQuestao = new RepositorioQuestaoEmBancoDados();
             var repositorioMateria = new RepositorioMateriaEmBancoDados();
 
@@ -166,13 +165,13 @@ namespace TesteMariana.WinApp
 
             controladores = new Dictionary<string, ControladorBase>();
 
-            controladores.Add("Teste", new ControladorTeste(repositorioTeste,repositorioQuestao, repositorioMateria,repositorioDisciplina));
+            //controladores.Add("Teste", new ControladorTeste(repositorioTeste,repositorioQuestao, repositorioMateria,repositorioDisciplina));
             controladores.Add("Questões", new ControladorQuestao(repositorioQuestao, repositorioMateria, repositorioDisciplina));
             controladores.Add("Materia", new ControladorMateria(repositorioMateria, repositorioDisciplina));
             controladores.Add("Disciplina", new ControladorDisciplina(repositorioDisciplina));
 
         }
 
-      
+
     }
 }

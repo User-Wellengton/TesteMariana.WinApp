@@ -96,11 +96,10 @@ namespace TesteMariana.Infra.BancoDados.ModuloQuestao
 
               FROM 
 
-                  TBQUESTAO AS Q INNER JOIN TBDISCIPLINA AS D ON
-                  Q.DISCIPLINA_NUMERO = D.ID,
-
-                  TBQUESTAO AS QT INNER JOIN TBMATERIA AS M ON
-                  QT.MATERIA_NUMERO = M.NUMERO";
+                  TBQUESTAO AS Q INNER JOIN TBMATERIA AS M ON
+                  Q.MATERIA_NUMERO = M.Numero
+				  INNER JOIN TBDISCIPLINA AS D ON
+                  D.Id = M.Disciplina_Numero";
 
 
 
@@ -120,12 +119,11 @@ namespace TesteMariana.Infra.BancoDados.ModuloQuestao
                     M.SERIE AS MATERIA_SERIE
 
               FROM 
-
-                  TBQUESTAO AS Q INNER JOIN TBDISCIPLINA AS D ON
-                  Q.DISCIPLINA_NUMERO = D.ID,
-
-                 TBQUESTAO AS QT INNER JOIN TBMATERIA AS M ON
-                 QT.MATERIA_NUMERO = M.NUMERO
+                    
+                    TBQUESTAO AS Q INNER JOIN TBMATERIA AS M ON
+                    Q.MATERIA_NUMERO = M.Numero
+				    INNER JOIN TBDISCIPLINA AS D ON
+                    D.Id = M.Disciplina_Numero
 
             WHERE
                     Q.NUMERO = @NUMERO";

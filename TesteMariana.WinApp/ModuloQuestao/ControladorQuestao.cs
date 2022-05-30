@@ -14,15 +14,15 @@ namespace TesteMariana.WinApp.ModuloQuestao
 {
     public class ControladorQuestao : ControladorBase
     {
-        
+
         private readonly IRepositorioDisciplina repositorioDisciplina;
         private readonly IRepositorioMateria repositorioMateria;
         private readonly IRepositorioQuestao repositorioQuestao;
 
 
         private TabelaQuestaoControl tabelaQuestao;
-        public ControladorQuestao(IRepositorioQuestao repositorioQuestao, 
-            IRepositorioMateria repositorioMateria, IRepositorioDisciplina repositorioDisciplina )
+        public ControladorQuestao(IRepositorioQuestao repositorioQuestao,
+            IRepositorioMateria repositorioMateria, IRepositorioDisciplina repositorioDisciplina)
         {
             this.repositorioMateria = repositorioMateria;
             this.repositorioDisciplina = repositorioDisciplina;
@@ -63,7 +63,7 @@ namespace TesteMariana.WinApp.ModuloQuestao
                 CarregarQuestoes();
             }
 
-            
+
         }
 
         public override void Editar()

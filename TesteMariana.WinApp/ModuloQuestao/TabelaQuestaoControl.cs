@@ -29,7 +29,7 @@ namespace TesteMariana.WinApp.ModuloQuestao
                 new DataGridViewTextBoxColumn { DataPropertyName = "ID", HeaderText = "ID"},
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "Enunciado", HeaderText = "Enunciado"},
-              
+
             };
 
             return colunas;
@@ -49,7 +49,6 @@ namespace TesteMariana.WinApp.ModuloQuestao
                 grid.Rows.Add(questao.Id, questao.Nome);
             }
         }
-
 
 
 

@@ -19,13 +19,14 @@ namespace TesteMariana.WinApp.ModuloQuestao
         private List<Materia> materias;
         private List<Alternativas> alternativas;
         private IRepositorioQuestao repositorioQuestao;
-
+        private char letra = 'a';
         public TelaCadastroQuestaoForm(List<Disciplina> disciplinas, List<Materia> materias, IRepositorioQuestao repositorioQuestao)
         {
             InitializeComponent();
             this.repositorioQuestao = repositorioQuestao;
             CarregarDisciplinas(disciplinas);
             this.materias = materias;
+            CarregarMaterias(materias);
             alternativas = new();
 
         }
@@ -43,6 +44,19 @@ namespace TesteMariana.WinApp.ModuloQuestao
                 comboBoxDisciplina.Items.Add(item);
             }
         }
+        /*
+        private void CarregarMaterias(List<Materia> materias)
+        {
+            comboBoxMateria.Items.Clear();
+            foreach (var item in materias)
+            {
+                if (item.disciplina == (Disciplina)comboBoxDisciplina.SelectedItem)
+                {
+                    comboBoxMateria.Items.Add(item);
+                }
+            }
+        }
+        */
         private void CarregarMaterias(List<Materia> materias)
         {
 
@@ -50,11 +64,7 @@ namespace TesteMariana.WinApp.ModuloQuestao
 
             foreach (var item in materias)
             {
-                if (item.disciplina.Equals(comboBoxDisciplina.SelectedItem))
-                {
-                    comboBoxMateria.Items.Add(item);
-                }
-
+                comboBoxMateria.Items.Add(item);
             }
         }
 
@@ -94,10 +104,17 @@ namespace TesteMariana.WinApp.ModuloQuestao
                 Alternativas alternativa = new();
 
                 alternativa.Opcao = txtBoxResposta.Text;
+                
                 alternativa.Correta = checkBoxAlternativaCorreta.Checked;
+
                 alternativas.Add(alternativa);
 
                 listBoxRespostas.Items.Add(alternativa);
+
+                if (letra == 'z')
+                    letra = 'A';
+                else
+                    letra++;
             }
         }
 
@@ -111,12 +128,10 @@ namespace TesteMariana.WinApp.ModuloQuestao
             questao.Nome = txtBoxEnunciado.Text;
             questao.disciplina = (Disciplina)comboBoxDisciplina.SelectedItem;
             questao.materia = (Materia)comboBoxMateria.SelectedItem;
-
             foreach (Alternativas item in alternativas)
             {
                 questao.alternativas.Add(item);
             }
-
             var resultadoValidacao = GravarRegistro(Questao);
 
             if (resultadoValidacao.IsValid == false)
